@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+i#!/usr/bin/env bash
 # Bash script that sets up your web servers for the deployment of web_static
 
 # Install Nginx if it not already installed
@@ -11,6 +11,7 @@ sudo mkdir /data/web_static/
 sudo mkdir /data/web_static/releases/
 sudo mkdir /data/web_static/shared/
 sudo mkdir /data/web_static/releases/test/
+sudo touch /data/web_static/releases/test/index.html
 
 # Create a fake HTML file
     echo "<!DOCTYPE html>
@@ -31,3 +32,4 @@ sudo chown -R ubuntu:ubuntu /data/
 # Update the Nginx configuration to server
 sudo sed -i '48i \\tlocation /hbnb_static {\n\talias /data/web_static/current/;\n\t}\n' /etc/nginx/sites-available/default
 sudo service nginx restart
+sudo service nginx reload

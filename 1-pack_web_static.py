@@ -3,7 +3,8 @@
 
 from fabric.api import local
 import time
-
+from time import strftime
+from datetime import date
 
 def do_pack():
     """ Generate .tgz file """
